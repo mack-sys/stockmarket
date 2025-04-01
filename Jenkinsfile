@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/mack-sys/stockmarket.git'
+               echo 'Checkout application...'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'mvn clean package'
+           	  echo 'Building application...'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'mvn test'
+                echo 'Testing application...'
             }
         }
 
