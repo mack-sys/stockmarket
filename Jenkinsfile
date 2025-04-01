@@ -1,29 +1,32 @@
 pipeline {
-    agent any  // Runs on any available agent
+    agent any  // Run on any available agent
 
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
-               echo 'Checkout application...'
+                git branch: 'main', url: 'https://github.com/mack-sys/stockmarket.git'
             }
         }
 
         stage('Build') {
             steps {
-           	  echo 'Building application...'
+                sh 'mvn clean package -DskipTests'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing application...'
+                sh 'mvn test'
             }
         }
+    }
 
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application...'
-            }
+    post {
+        success {
+            echo 'Build and Tests Passed!'
+        }
+        failure {
+            echo 'Build Failed. Check logs for details.'
         }
     }
 }
