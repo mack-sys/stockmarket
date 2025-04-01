@@ -1,0 +1,22 @@
+# Ignore target folder and build artifacts
+/target
+/*.jar
+/*.war
+
+# Ignore IDE files
+/.idea
+/.vscode
+/.classpath
+/.project
+/.settings/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore environment variables
+.env
